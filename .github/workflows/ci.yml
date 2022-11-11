@@ -1,0 +1,51 @@
+# Based on https://about.codecov.io/blog/measuring-php-code-coverage-with-phpunit-and-github-actions/ and https://dev.to/robertobutti/test-automation-for-laravel-7-and-mysql-with-github-actions-ijj
+
+name: CI
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql-service:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: courses_testing
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install backend dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+          php_extensions: gd bcmath pdo_mysql zip
+      - name: Setup application
+        run: |
+          cp .env.ci .env
+          php artisan key:generate
+          php artisan migrate
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        env:
+          XDEBUG_MODE: coverage
+        with:
+          php_version: "8.1"
+          php_extensions: gd bcmath pdo_mysql zip xdebug
+          args: --coverage-clover=coverage.xml
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          verbose: true
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v3
+        with:
+          args: --no-progress --memory-limit=256M
