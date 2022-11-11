@@ -1,7 +1,7 @@
 <div class="col">
     <div class="card shadow-sm h-100">
         <div class="card-body">
-            <h4 class="card-title"><a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ $course->title }}" class="text-truncate overflow_tooltip d-block text-decoration-none" href="{{ route('course.show', ['course' => $course, 'slug' => $course->slug]) }}">{{ $course->title }}</a></h4>
+            <h4><a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="{{ $course->title }}" class="text-truncate overflow_tooltip d-block text-decoration-none" href="{{ route('course.show', ['course' => $course, 'slug' => $course->slug]) }}">{{ $course->title }}</a></h4>
             @include('partials.course-card', ['course' => $course, 'extra' => false, 'subscription' => Auth::check() && $course->subscriptions->isNotEmpty() /* already filtered on user id */])
         </div>
         <div class="card-footer fw-light">
