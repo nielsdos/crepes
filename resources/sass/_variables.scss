@@ -1,0 +1,40 @@
+// Features
+$enable-shadows: true;
+$enable-validation-icons: true;
+$enable-gradients: false;
+
+// Component icons
+$breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E");
+
+// Colors
+$body-bg: #f0f0f0;
+$custom-title-color: #2c3e50;
+$green: #16a34a;
+$input-bg: #fff;
+
+// Copied colors from original to have them available here
+$red: #dc3545;
+
+// Borders
+$dropdown-border-width: 0;
+$card-border-color: #e9ecef;
+$border-color: $card-border-color;
+$hr-border-color: #ced4da;
+$border-radius:               .75rem;
+$border-radius-sm:            .5rem;
+$border-radius-lg:            1rem;
+
+// Custom constants
+$box-shadow-common: 0 .125rem .25rem rgba(0, 0, 0, .075);
+
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-size-base: 0.94rem;
+
+// Validation: get rid of the "valid" entry
+$form-validation-states: (
+    "invalid": (
+        "color": $red,
+        "icon": url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$red}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$red}' stroke='none'/></svg>"),
+    )
+);

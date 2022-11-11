@@ -1,0 +1,157 @@
+@use "sass:math";
+
+.btn:focus {
+    box-shadow: var(--bs-btn-box-shadow), var(--bs-btn-focus-box-shadow) !important;
+}
+
+.btn-success {
+    --bs-btn-color: #fff !important;
+    --bs-btn-hover-color: #fff !important;
+    --bs-btn-active-color: #fff !important;
+}
+
+button.dropdown-item {
+    cursor: pointer;
+}
+
+fieldset:disabled input, fieldset:disabled textarea {
+    background: white !important;
+}
+
+.navbar {
+	background: mix($blue-800, $blue-900, 30%);
+}
+
+.accordion-item {
+    background: #fff !important;
+}
+
+.card-title {
+	color: $custom-title-color;
+}
+
+.title {
+	color: $custom-title-color;
+	font-weight: 300;
+}
+
+.small {
+	font-size: 80%;
+	font-weight: 300;
+}
+
+.nav-link {
+	transition: color 0.25s ease;
+}
+
+a {
+	outline: none;
+}
+
+.table-middle > tbody > tr > td {
+	vertical-align: middle;
+}
+
+html {
+    position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 50px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+}
+
+@media (max-width: 380px) {
+	footer {
+		font-size: 0.75rem;
+	}
+}
+
+.bd-callout {
+    padding: 1.25rem 1.25rem 0.25rem 1.25rem;
+	background-color: $card-bg;
+	border-left: .25rem solid $card-border-color;
+	border-radius: $border-radius-sm;
+}
+
+.bd-callout-primary {
+    border-left-color: $blue-400;
+}
+
+.bd-callout-primary h4 {
+    color: $blue-400;
+}
+
+.bd-callout-success {
+    border-left-color: $success
+}
+
+.bd-callout-success h4 {
+    color: $success;
+}
+
+.btn.btn-ico.btn-sm {
+	width: 32px;
+	height: 32px;
+}
+
+.btn.btn-ico {
+	width: 37px;
+	height: 37px;
+}
+
+.table-responsive {
+	background: $white;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow-common;
+	border-top: $border-width solid $card-border-color;
+
+	& > .table {
+		margin-bottom: 0;
+
+		& th {
+			border-top: 0;
+		}
+
+		& thead {
+			background: $light;
+			color: $gray-700;
+		}
+
+		& td {
+			font-size: 1em;
+			font-weight: 300;
+		}
+	}
+}
+
+.table-no-level {
+	box-shadow: none;
+	border: $border-width solid $card-border-color;
+}
+
+// Mobile navbar
+@include media-breakpoint-up(md) {
+	.navbar-f .nav-item {
+		@media screen and (max-width: 1185px) {
+			@include qq(min 3) {
+				& a {
+					font-size: 0;
+				}
+
+				& i {
+					font-size: 1.5rem;
+					margin-right: 0.5rem;
+				}
+			}
+		}
+	}
+}

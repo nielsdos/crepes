@@ -1,0 +1,21 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    # Level 9 is the highest level
+    level: 6
+
+    ignoreErrors:
+        - '#Call to an undefined static method Illuminate\\Support\\Facades\\Cache::\w+\(\)#'
+        - '#Call to an undefined method Illuminate\\Contracts\\Auth\\\w+::\w+\(\)#'
+        - '#^.*Illuminate\\Contracts\\Auth\\Authenticatable\|null given.$#'
+        - '#Access to an undefined property Illuminate\\Contracts\\Auth\\Authenticatable::\$\w+#'
+
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#    checkMissingIterableValueType: false

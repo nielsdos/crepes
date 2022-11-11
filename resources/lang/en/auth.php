@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'remember_me' => 'Remember me',
+    'forgot_password' => 'Forgot password',
+    'password' => 'Password',
+    'password_confirm' => 'Repeat password',
+    'function_example' => 'For example: teacher, director',
+    'send_password_reset_link' => 'Send password reset link',
+    'password_info' => 'Password must be at least 8 characters long.',
+    'verify_your_email' => 'Check your email',
+    'verification_link_sent' => 'We have sent emailed the verification link again.',
+    'before_proceed_validate_email' => 'Before you can continue, please check your email for further instructions. It is possible that the email arrives in the junk folder.',
+    'not_receive_verification_mail_1' => 'If you ave not received an email, please click the button below to send a new one.',
+    'not_receive_verification_mail_2' => 'Send new verification email',
+    'remember_me_cookie_notice' => 'The "Remember me" function uses a functional cookie. By using this feature, you consent the use of this cookie.',
+    'old_password' => 'Current password',
+    'new_password' => 'New password',
+    'new_password_confirm' => 'Repeat new password',
+    'incorrect_current_password' => 'Current password is invalid.',
+    'new_email' => 'New email address',
+    'new_email_confirm' => 'Repeat new email address',
+    'recaptcha_cookie_notice' => 'The reCAPTCHA functionality is necessary to protect the site and uses cookies to do so.',
+    'restored_notice' => 'To complete the reactivation of your account, please click the link in the verification email.',
+    'restored_done' => 'Your account has been reactivated.',
+];

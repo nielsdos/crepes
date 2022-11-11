@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'failed' => 'Deze combinatie van e-mailadres en wachtwoord is niet geldig.',
+    'throttle' => 'Te veel mislukte inlogpogingen. Probeer het over :seconds seconden opnieuw.',
+    'remember_me' => 'Mij onthouden',
+    'forgot_password' => 'Wachtwoord vergeten',
+    'password' => 'Wachtwoord',
+    'password_confirm' => 'Wachtwoord herhalen',
+    'function_example' => 'Voorbeeld: leerkracht, directeur',
+    'send_password_reset_link' => 'Wachtwoord herstel link versturen',
+    'password_info' => 'Wachtwoord moet minimaal acht tekens lang zijn.',
+    'verify_your_email' => 'Controleer uw e-mail',
+    'verification_link_sent' => 'We hebben de e-mail opnieuw naar uw e-mailadres verstuurd.',
+    'before_proceed_validate_email' => 'Voordat u kunt verdergaan, gelieve uw e-mail te controleren voor verdere instructies. Het is mogelijk dat de e-mail in de spam folder terecht komt.',
+    'not_receive_verification_mail_1' => 'Als u geen e-mail gekregen heeft, klik dan op onderstaande knop om een nieuwe te sturen.',
+    'not_receive_verification_mail_2' => 'Nieuwe verificatie e-mail sturen',
+    'remember_me_cookie_notice' => 'De "Mij onthouden" functie gebruikt een functionele cookie. Door deze functie te gebruiken, geeft u toestemming voor deze cookie.',
+    'old_password' => 'Huidig wachtwoord',
+    'new_password' => 'Nieuw wachtwoord',
+    'new_password_confirm' => 'Nieuw wachtwoord herhalen',
+    'incorrect_current_password' => 'Huidig wachtwoord is ongeldig.',
+    'new_email' => 'Nieuw e-mailadres',
+    'new_email_confirm' => 'Nieuw e-mailadres herhalen',
+    'recaptcha_cookie_notice' => 'De reCAPTCHA functie is noodzakelijk ter bescherming van de site en gebruikt cookies.',
+    'restored_notice' => 'Om het heractiveren van uw account to voltooien moet u klikken op de link in de verificatie e-mail.',
+    'restored_done' => 'Uw account is geheractiveerd.',
+];
