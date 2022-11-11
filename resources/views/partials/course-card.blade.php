@@ -13,13 +13,14 @@
         @endif
     </span>
 @endif
+@php($sessionGroupsCount = $course->sessionGroups->count())
 <span class="card-subtitle mb-1 text-muted small">
     @svg('solid/rotate-right', 'fa-1x')
-    {{ __('common.course_group_times_desc', ['times' => $course->sessionGroups->count()]) }}
+    {{ trans_choice('common.course_group_times_desc', $sessionGroupsCount, ['times' => $sessionGroupsCount]) }}
 </span>
 <span class="card-subtitle mb-1 text-muted small">
     @svg('solid/list', 'fa-1x')
-    @php($session_count = $course->sessions->count() / $course->sessionGroups->count())
+    @php($session_count = $course->sessions->count() / $sessionGroupsCount)
     {{ trans_choice('common.course_sessions_desc', $session_count, ['times' => $session_count]) }}
 </span>
 <span class="card-subtitle mb-1 text-muted small ellipsis">
