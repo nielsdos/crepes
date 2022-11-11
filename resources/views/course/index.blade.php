@@ -4,6 +4,7 @@
 @svg('solid/book')
 @endsection
 @section('buttons')
+
 <div class="d-flex">
 	<div class="dropdown me-1">
 		<button class="btn btn-primary dropdown-toggle" id="yearDropDown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

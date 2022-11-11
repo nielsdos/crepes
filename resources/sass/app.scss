@@ -46,7 +46,7 @@
 }
 
 .small-msg {
-    font-size: 80%;
+    font-size: 0.9em;
     margin-top: 0.25rem;
     font-weight: 300;
 }
@@ -61,6 +61,10 @@
 
 .mb--4-5 {
     margin-bottom: -$spacer * 2.5;
+}
+
+.title {
+    font-weight: bold;
 }
 
 .titlebuttons {
@@ -158,4 +162,13 @@ fieldset.second {
 .ico-sm--1 {
     width: initial !important;
     margin-top: 2px;
+}
+
+.text-dates {
+    color: $red;
+    font-size: 0.9em;
+}
+
+.card-subtitle {
+    display: block;
 }

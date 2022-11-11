@@ -17,15 +17,12 @@ $red: #dc3545;
 
 // Borders
 $dropdown-border-width: 0;
-$card-border-color: #e9ecef;
+$card-border-color: #e7ecf1;
 $border-color: $card-border-color;
 $hr-border-color: #ced4da;
-$border-radius:               .75rem;
-$border-radius-sm:            .5rem;
-$border-radius-lg:            1rem;
-
-// Custom constants
-$box-shadow-common: 0 .125rem .25rem rgba(0, 0, 0, .075);
+$border-radius:               1.25rem;
+$border-radius-sm:            .75rem;
+$border-radius-lg:            1.5rem;
 
 // Typography
 $font-family-sans-serif: "Open Sans", sans-serif;
@@ -38,3 +35,8 @@ $form-validation-states: (
         "icon": url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$red}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$red}' stroke='none'/></svg>"),
     )
 );
+
+// Shadows
+$box-shadow:                  0 .5rem 1rem -0.125rem rgba(100, 100, 100, .2);
+$box-shadow-sm:               0 .25rem .5rem -0.25rem rgba(100, 100, 100, .1);
+$box-shadow-lg:               0 1rem 2rem 0 rgba(100, 100, 100, .2);

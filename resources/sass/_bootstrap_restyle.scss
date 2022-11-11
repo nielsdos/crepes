@@ -19,7 +19,7 @@ fieldset:disabled input, fieldset:disabled textarea {
 }
 
 .navbar {
-	background: mix($blue-800, $blue-900, 30%);
+	background: mix($blue-800, $blue-900, 75%);
 }
 
 .accordion-item {
@@ -111,7 +111,7 @@ footer {
 .table-responsive {
 	background: $white;
 	border-radius: $border-radius;
-	box-shadow: $box-shadow-common;
+	box-shadow: $box-shadow-sm;
 	border-top: $border-width solid $card-border-color;
 
 	& > .table {
@@ -130,6 +130,9 @@ footer {
 			font-size: 1em;
 			font-weight: 300;
 		}
+        & td:first-child, & th:first-child {
+            padding-left: 1em;
+        }
 	}
 }
 
