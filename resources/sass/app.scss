@@ -151,7 +151,7 @@ fieldset.second {
 .question-btn {
     padding-left: 1px;
     padding-right: 0;
-    padding-top: 8px;
+    padding-top: 7px;
 }
 
 .ico-l--1 {
@@ -167,6 +167,10 @@ fieldset.second {
 .text-dates {
     color: $red;
     font-size: 0.9em;
+
+    & > svg {
+        vertical-align: -0.06em !important;
+    }
 }
 
 .card-subtitle {
