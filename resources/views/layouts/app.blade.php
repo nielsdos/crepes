@@ -8,7 +8,10 @@
 	<title>@yield('title') - {{ config('app.title') }}</title>
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 	<script src="{{ url(mix('js/app.js')) }}" defer></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:300,400&display=swap" rel="stylesheet">
+    </noscript>
 	<link href="{{ url(mix('css/app.css')) }}" rel="stylesheet">
     <!-- This software is licensed under AGPLv3. Source is available at https://github.com/nielsdos/crepes -->
 </head>
