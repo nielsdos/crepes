@@ -21,6 +21,7 @@
 .session-square {
     //background: linear-gradient(45deg,#{lighten($red-100, 8%)} 0,#{lighten($orange-100, 8%)} 100%);
     background: lighten($red-100, 8%);
+    border: 1px solid lighten($red-100, 7%);
 }
 
 @include media-breakpoint-up(md) {
