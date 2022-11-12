@@ -114,6 +114,8 @@
                         <div class="col-md-6">
                             <input id="admin_notification_email" type="text" class="form-control{{ $errors->has('admin_notification_email') ? ' is-invalid' : '' }}" name="admin_notification_email" value="{{ old_str('admin_notification_email', $admin_notification_email) }}">
 
+                            <span class="text-secondary small-msg">{{ __('acts.admin_notification_email_hint') }}</span>
+
                             @if($errors->has('admin_notification_email'))
                             <span class="invalid-feedback" role="alert">{{ ucfirst($errors->first('admin_notification_email')) }}</span>
                             @endif

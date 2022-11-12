@@ -67,4 +67,5 @@ return [
     'main_meta_description_hint' => 'Tip: zoekmachines zullen deze tekst weergeven bij het zoekresultaat van uw hoofdpagina. De aangeraden maximum lengte is 300 karakters.',
     'options' => 'Opties',
     'admin_notification_email' => 'Administratie hoofd e-mailadres',
+    'admin_notification_email_hint' => 'Tip: notificaties over inschrijvingen en cursussen zullen naar dit e-mailadres gestuurd worden. Indien blanco zullen er geen notificaties niet gestuurd worden.',
 ];

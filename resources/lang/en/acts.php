@@ -67,4 +67,5 @@ return [
     'main_meta_description_hint' => 'Tip: search engines will display this text on the search result of your main page. Recommended maximum length is 300 characters.',
     'options' => 'Options',
     'admin_notification_email' => 'Administration main email address',
+    'admin_notification_email_hint' => 'Tip: notifications about registrations and courses will be sent to this email address. If left empty, no notifications will be sent.',
 ];
