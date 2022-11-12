@@ -9,6 +9,7 @@ use App\Models\SessionDescription;
 use App\Models\SessionGroup;
 use App\Notifications\CourseDestroyed;
 use App\Notifications\CourseEdited;
+use App\Services\AdminNotifier;
 use App\Services\CourseDependentCache;
 use App\Services\Exports\SubscribersExportable;
 use App\Services\Settings\ApplicationSettings;
@@ -17,7 +18,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class CourseController extends Controller
@@ -336,11 +336,12 @@ class CourseController extends Controller
      *
      * @param  SaveCourse  $request
      * @param  Course  $course
+     * @param  AdminNotifier  $adminNotifier
      * @return RedirectResponse
      *
      * @throws \Throwable
      */
-    public function update(SaveCourse $request, Course $course): RedirectResponse
+    public function update(SaveCourse $request, Course $course, AdminNotifier $adminNotifier): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -382,8 +383,7 @@ class CourseController extends Controller
             }
         });
 
-        Notification::route('mail', config('mail.notification_address'))
-                        ->notify(new CourseEdited($request->user(), $course));
+        $adminNotifier->notify(new CourseEdited($request->user(), $course));
 
         if ($request->input('save')) {
             return self::createCourseRedirect($course)->with('success', __('acts.saved'));
@@ -397,11 +397,12 @@ class CourseController extends Controller
      *
      * @param  Request  $request
      * @param  Course  $course
+     * @param  AdminNotifier  $adminNotifier
      * @return RedirectResponse
      *
      * @throws \Throwable
      */
-    public function destroy(Request $request, Course $course): RedirectResponse
+    public function destroy(Request $request, Course $course, AdminNotifier $adminNotifier): RedirectResponse
     {
         DB::transaction(function () use ($course) {
             // Can't cascade descriptions...
@@ -418,8 +419,7 @@ class CourseController extends Controller
             }
         });
 
-        Notification::route('mail', config('mail.notification_address'))
-            ->notify(new CourseDestroyed($request->user(), $course->title));
+        $adminNotifier->notify(new CourseDestroyed($request->user(), $course->title));
 
         return redirect(route('course.index'))->with('success', __('acts.course_deleted', ['course' => $course->title]));
     }

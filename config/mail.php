@@ -60,8 +60,6 @@ return [
         'name' => env('MAIL_FROM_NAME'),
     ],
 
-    'notification_address' => env('MAIL_NOTIFICATION_ADDRESS'),
-
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

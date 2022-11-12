@@ -73,4 +73,14 @@ class ApplicationSettings
     {
         $this->settingsProvider->set('main_meta_description', $description);
     }
+
+    public function getAdminNotificationEmail(): string
+    {
+        return $this->settingsProvider->get('admin_notification_email', '');
+    }
+
+    public function setAdminNotificationEmail(string $email): void
+    {
+        $this->settingsProvider->set('admin_notification_email', $email);
+    }
 }

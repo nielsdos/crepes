@@ -8,9 +8,9 @@ use App\Models\Subscription;
 use App\Models\User;
 use App\Notifications\AdminSubscribe;
 use App\Notifications\OwnerSubscribe;
+use App\Services\AdminNotifier;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
 
 class SubscriptionController extends Controller
 {
@@ -85,23 +85,23 @@ class SubscriptionController extends Controller
     /**
      * Notify people of subscription update (subscribe or unsubscribe)
      */
-    private function notifySubscriptionUpdate(User $user, Course $course, int $groupIndex, bool $unsub): void
+    private function notifySubscriptionUpdate(User $user, Course $course, int $groupIndex, bool $unsub, AdminNotifier $adminNotifier): void
     {
         if ($course->notify_me) {
             $course->owner->notify(new OwnerSubscribe($user, $course, $groupIndex, $unsub));
         }
 
-        Notification::route('mail', config('mail.notification_address'))
-                        ->notify(new AdminSubscribe($user, $course, $groupIndex, $unsub));
+        $adminNotifier->notify(new AdminSubscribe($user, $course, $groupIndex, $unsub));
     }
 
     /**
      * Subscribes a user to a course session group.
      *
      * @param  SessionGroup  $sessionGroup
+     * @param  AdminNotifier  $adminNotifier
      * @return RedirectResponse
      */
-    public function subscribe(SessionGroup $sessionGroup)
+    public function subscribe(SessionGroup $sessionGroup, AdminNotifier $adminNotifier)
     {
         $course = $sessionGroup->course;
         $user = Auth::user();
@@ -118,7 +118,7 @@ class SubscriptionController extends Controller
             'session_group_id' => $sessionGroup->id,
         ]);
 
-        $this->notifySubscriptionUpdate($user, $course, $sub->groupIndex(), false);
+        $this->notifySubscriptionUpdate($user, $course, $sub->groupIndex(), false, $adminNotifier);
 
         return back();
     }
@@ -127,9 +127,10 @@ class SubscriptionController extends Controller
      * Unsubscribes a user from a course session group.
      *
      * @param  Subscription  $subscription
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  AdminNotifier  $adminNotifier
+     * @return RedirectResponse
      */
-    public function unsubscribe(Subscription $subscription)
+    public function unsubscribe(Subscription $subscription, AdminNotifier $adminNotifier)
     {
         if ($subscription->user_id !== Auth::id()
             || $subscription->sessionGroup->course->tooLateToSubscribe()) {
@@ -137,7 +138,7 @@ class SubscriptionController extends Controller
         }
 
         $this->notifySubscriptionUpdate(
-            Auth::user(), $subscription->sessionGroup->course, $subscription->groupIndex(), true
+            Auth::user(), $subscription->sessionGroup->course, $subscription->groupIndex(), true, $adminNotifier
         );
 
         $subscription->forceDelete();

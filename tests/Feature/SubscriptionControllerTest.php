@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Models\User;
 use App\Notifications\AdminSubscribe;
 use App\Notifications\OwnerSubscribe;
+use App\Services\Settings\ApplicationSettings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Carbon;
@@ -132,6 +133,8 @@ class SubscriptionControllerTest extends TestCase
     public function testSubscribeSucceeds(): void
     {
         Notification::fake();
+
+        app(ApplicationSettings::class)->setAdminNotificationEmail('notification@example.com');
 
         $user = User::factory()->create(['perms' => User::PERMS_COURSE_MANAGER]);
         $actingUser = User::factory()->create(['function' => 'something']);

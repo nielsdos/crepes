@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\User;
 use App\Observers\CourseObserver;
 use App\Observers\UserObserver;
+use App\Services\AdminNotifier;
 use App\Services\CustomUserProvider;
 use App\Services\Settings\ApplicationSettings;
 use App\Services\Settings\SettingsProvider;
@@ -68,6 +69,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(SettingsProvider::class, SettingsProviderImpl::class);
         $this->app->singleton(ApplicationSettings::class);
+        $this->app->singleton(AdminNotifier::class);
         $this->app['auth']->provider('custom', function ($config) {
             return new CustomUserProvider($this->app['hash'], User::class);
         });

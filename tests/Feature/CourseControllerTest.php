@@ -211,6 +211,8 @@ class CourseControllerTest extends TestCase
     {
         \Notification::fake();
 
+        app(ApplicationSettings::class)->setAdminNotificationEmail('notification@example.com');
+
         $sessions = $this->createTestSessions();
         $course = $sessions[0]->sessionGroup->course;
 
@@ -306,6 +308,8 @@ class CourseControllerTest extends TestCase
     public function testUpdateWrongSessionGroupCount(): void
     {
         \Notification::fake();
+
+        app(ApplicationSettings::class)->setAdminNotificationEmail('notification@example.com');
 
         $owner = User::factory()->create(['perms' => User::PERMS_COURSE_MANAGER]);
 
