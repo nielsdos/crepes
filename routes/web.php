@@ -39,3 +39,4 @@ Route::get('sitemap.xml', 'SitemapIndexController@index');
 Route::get('settings', 'SettingsController@edit')->name('settings.edit');
 Route::put('settings/view', 'SettingsController@updateView')->name('settings.update.view');
 Route::put('settings/privacy', 'SettingsController@updatePrivacyPolicy')->name('settings.update.privacy');
+Route::put('settings/options', 'SettingsController@updateOptions')->name('settings.update.options');

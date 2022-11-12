@@ -34,6 +34,7 @@ class SettingsControllerTest extends TestCase
         $response->assertViewHas('course_overlap_months', 0);
         $response->assertViewHas('privacy_policy_html', '');
         $response->assertViewHas('main_meta_description', '');
+        $response->assertViewHas('admin_notification_email', '');
     }
 
     public function testUpdateViewNotLoggedIn(): void
@@ -152,5 +153,48 @@ class SettingsControllerTest extends TestCase
             ->assertSessionHasNoErrors()
             ->assertStatus(302);
         $this->assertDatabaseHas('settings', ['key' => 'privacy_policy', 'value' => '<p>hi</p><a href="https://google.com" target="_blank" rel="noreferrer noopener">123</a>']);
+    }
+
+    public function testUpdateOptionsNotLoggedIn(): void
+    {
+        $response = $this->put(route('settings.update.options'));
+        $response->assertStatus(302);
+        $response->assertRedirect('login');
+    }
+
+    public function testUpdateOptionsNotAuthorized(): void
+    {
+        $user = User::factory()->create(['perms' => User::PERMS_COURSE_MANAGER]);
+        $response = $this->actingAs($user)->put(route('settings.update.options'));
+        $response->assertStatus(403);
+    }
+
+    public function testUpdateOptions(): void
+    {
+        $user = User::factory()->create(['perms' => User::PERMS_ADMIN]);
+        $response = $this->actingAs($user)->put(route('settings.update.options', [
+        ]));
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertStatus(302);
+        $response = $this->actingAs($user)->put(route('settings.update.options', [
+            'admin_notification_email' => '',
+        ]));
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertStatus(302);
+        $response = $this->actingAs($user)->put(route('settings.update.options', [
+            'admin_notification_email' => 'invalidemail',
+        ]));
+        $response
+            ->assertSessionHasErrors('admin_notification_email')
+            ->assertStatus(302);
+        $response = $this->actingAs($user)->put(route('settings.update.options', [
+            'admin_notification_email' => 'test@example.com',
+        ]));
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertStatus(302);
+        $this->assertDatabaseHas('settings', ['key' => 'admin_notification_email', 'value' => 'test@example.com']);
     }
 }

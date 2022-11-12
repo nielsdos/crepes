@@ -235,24 +235,6 @@ class AccountController extends Controller
     }
 
     /**
-     * @param  Request  $request
-     * @param  array<string|array<string|Rule>>  $rules
-     * @param  string  $hash
-     * @return array<string|int>
-     *
-     * @throws ValidationException
-     */
-    private function validateRequestWithHashFailureRedirect(Request $request, array $rules, string $hash): array
-    {
-        try {
-            return $request->validate($rules);
-        } catch (ValidationException $exception) {
-            $exception->redirectTo(url()->previous().'#'.$hash);
-            throw $exception;
-        }
-    }
-
-    /**
      * @throws AuthorizationException
      * @throws ValidationException
      */
@@ -260,7 +242,7 @@ class AccountController extends Controller
     {
         $user = $this->updatePrelude('update', $id, false);
 
-        $validated = $this->validateRequestWithHashFailureRedirect($request, [
+        $validated = validateRequestWithHashFailureRedirect($request, [
             'password_current_password' => ['required', 'string', $this->createCurrentPasswordValidationCheck($user)],
             'password' => 'required|string|min:8|confirmed',
         ], 'password');
@@ -281,7 +263,7 @@ class AccountController extends Controller
     {
         $user = $this->updatePrelude('update', $id, false);
 
-        $validated = $this->validateRequestWithHashFailureRedirect($request, [
+        $validated = validateRequestWithHashFailureRedirect($request, [
             'email_current_password' => ['required', 'string', $this->createCurrentPasswordValidationCheck($user)],
             'email' => 'required|string|email|max:255|confirmed|unique:users,email,'.$user->id,
         ], 'email');
@@ -316,7 +298,7 @@ class AccountController extends Controller
     {
         $user = $this->updatePrelude('updateAdmin', $id, true);
 
-        $validated = $this->validateRequestWithHashFailureRedirect($request, [
+        $validated = validateRequestWithHashFailureRedirect($request, [
             'admin_email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
             'role' => ['required', 'integer', Rule::in(User::PERMS_ARRAY)],
         ], 'admin');

@@ -9,6 +9,7 @@
     @include('partials.navbar-pills-header', ['entries' => [
         ['view', @svg("solid/eye")->toHtml().' '.__('acts.view_config')],
         ['privacy-policy', @svg("solid/user-secret")->toHtml().' '.'Privacy policy'],
+        ['options', @svg("solid/wrench")->toHtml().' '.__('acts.options')],
     ]])
 
     <div class="card">
@@ -99,6 +100,33 @@
                     <button type="submit" name="save" class="btn btn-primary mt-3">
                         {{ __('acts.save') }}
                     </button>
+                </form>
+            </div>
+            <div role="tabpanel" class="card-body tab-pane" aria-labelledby="options-tab" id="options">
+                <form method="POST" action="{{ route('settings.update.options') }}">
+                    @csrf
+                    @method('PUT')
+
+                    <div class="mb-3 row">
+                        <label for="admin_notification_email"
+                               class="col-md-4 col-form-label text-md-end">{{ __('acts.admin_notification_email') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="admin_notification_email" type="text" class="form-control{{ $errors->has('admin_notification_email') ? ' is-invalid' : '' }}" name="admin_notification_email" value="{{ old_str('admin_notification_email', $admin_notification_email) }}">
+
+                            @if($errors->has('admin_notification_email'))
+                            <span class="invalid-feedback" role="alert">{{ ucfirst($errors->first('admin_notification_email')) }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" name="save" class="btn btn-primary">
+                                {{ __('acts.save') }}
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

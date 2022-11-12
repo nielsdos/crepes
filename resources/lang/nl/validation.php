@@ -176,5 +176,6 @@ return [
         'course_start_month' => 'maand',
         'course_overlap_months' => 'overlap',
         'main_meta_description' => 'hoofdpagina beschrijving meta tag',
+        'admin_notification_email' => 'Administratie hoofd e-mailadres',
     ],
 ];

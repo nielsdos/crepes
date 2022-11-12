@@ -176,5 +176,6 @@ return [
         'course_start_month' => 'month',
         'course_overlap_months' => 'overlap',
         'main_meta_description' => 'main page description meta tag',
+        'admin_notification_email' => 'Administration main email address',
     ],
 ];

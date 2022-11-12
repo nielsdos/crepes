@@ -65,4 +65,6 @@ return [
     'show_map_on_course_details' => 'Show a map on the course details page if possible',
     'main_meta_description' => 'Main page description meta tag',
     'main_meta_description_hint' => 'Tip: search engines will display this text on the search result of your main page. Recommended maximum length is 300 characters.',
+    'options' => 'Options',
+    'admin_notification_email' => 'Administration main email address',
 ];

@@ -65,4 +65,6 @@ return [
     'show_map_on_course_details' => 'Toon een kaartje op de cursusdetails pagina indien mogelijk',
     'main_meta_description' => 'Hoofdpagina omschrijving meta tag',
     'main_meta_description_hint' => 'Tip: zoekmachines zullen deze tekst weergeven bij het zoekresultaat van uw hoofdpagina. De aangeraden maximum lengte is 300 karakters.',
+    'options' => 'Opties',
+    'admin_notification_email' => 'Administratie hoofd e-mailadres',
 ];
