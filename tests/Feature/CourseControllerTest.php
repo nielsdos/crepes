@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Course;
 use App\Models\Session;
+use App\Models\SessionDescription;
 use App\Models\SessionGroup;
 use App\Models\Subscription;
 use App\Models\User;
@@ -12,6 +13,7 @@ use App\Notifications\CourseEdited;
 use App\Services\Settings\ApplicationSettings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Notifications\AnonymousNotifiable;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
@@ -140,6 +142,84 @@ class CourseControllerTest extends TestCase
             ->get(route('course.show', ['course' => $course, 'slug' => $course->slug]))
             ->assertStatus(200)
             ->assertSeeText(__('common.has_subscribed'));
+    }
+
+    public function testShowSessionGroupAddToCalendarObjectsFormatMultipleSessions(): void
+    {
+        $user = User::factory()->create(['perms' => User::PERMS_COURSE_MANAGER]);
+        $course = Course::create(['title' => 'test', 'slug' => 'slug', 'description' => 'course description', 'last_date' => Carbon::now(), 'owner_id' => $user->id, 'notify_me' => true]);
+        $description1 = SessionDescription::create(['description' => 'description1']);
+        $description2 = SessionDescription::create(['description' => 'description2']);
+        $group1 = SessionGroup::create(['course_id' => $course->id, 'max_ppl' => 60]);
+        $session1_1 = Session::create(['session_group_id' => $group1->id, 'start' => Carbon::now()->addDay(), 'end' => Carbon::now()->addDays(2), 'location' => 'location1_1', 'session_description_id' => $description1->id]);
+        $session1_2 = Session::create(['session_group_id' => $group1->id, 'start' => Carbon::now()->addDay(), 'end' => Carbon::now()->addDays(2), 'location' => 'location1_2', 'session_description_id' => $description2->id]);
+        $group2 = SessionGroup::create(['course_id' => $course->id, 'max_ppl' => 60]);
+        $session2_1 = Session::create(['session_group_id' => $group2->id, 'start' => Carbon::now()->addDays(3), 'end' => Carbon::now()->addDays(4), 'location' => 'location2_1', 'session_description_id' => $description1->id]);
+        $session2_2 = Session::create(['session_group_id' => $group2->id, 'start' => Carbon::now()->addDays(3), 'end' => Carbon::now()->addDays(4), 'location' => 'location2_2', 'session_description_id' => $description2->id]);
+
+        $response = $this->get(route('course.show', ['course' => $course, 'slug' => $course->slug]))
+            ->assertStatus(200);
+
+        $sessionGroupAddToCalendarObjects = $response->viewData('sessionGroupAddToCalendarObjects')->map(fn (string $item) => json_decode($item, true));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.name'), $course->title);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.description'), $course->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.name'), $course->title);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.description'), $course->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.description'), $description1->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.description'), $description2->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.description'), $description1->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.description'), $description2->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.location'), 'location1_1');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.location'), 'location1_2');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.location'), 'location2_1');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.location'), 'location2_2');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.startDate'), $session1_1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.startDate'), $session1_2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.startDate'), $session2_1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.startDate'), $session2_2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.endDate'), $session1_1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.endDate'), $session1_2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.endDate'), $session2_1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.endDate'), $session2_2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.startTime'), $session1_1['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.startTime'), $session1_2['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.startTime'), $session2_1['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.startTime'), $session2_2['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.0.endTime'), $session1_1['end']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.dates.1.endTime'), $session1_2['end']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.0.endTime'), $session2_1['end']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.dates.1.endTime'), $session2_2['end']->isoFormat('HH:mm'));
+    }
+
+    public function testShowSessionGroupAddToCalendarObjectsFormatSingleSessions(): void
+    {
+        $user = User::factory()->create(['perms' => User::PERMS_COURSE_MANAGER]);
+        $course = Course::create(['title' => 'test', 'slug' => 'slug', 'description' => 'course description', 'last_date' => Carbon::now(), 'owner_id' => $user->id, 'notify_me' => true]);
+        $description1 = SessionDescription::create(['description' => 'description1']);
+        $description2 = SessionDescription::create(['description' => 'description2']);
+        $group1 = SessionGroup::create(['course_id' => $course->id, 'max_ppl' => 60]);
+        $session1 = Session::create(['session_group_id' => $group1->id, 'start' => Carbon::now()->addDay(), 'end' => Carbon::now()->addDays(2), 'location' => 'location1', 'session_description_id' => $description1->id]);
+        $group2 = SessionGroup::create(['course_id' => $course->id, 'max_ppl' => 60]);
+        $session2 = Session::create(['session_group_id' => $group2->id, 'start' => Carbon::now()->addDays(3), 'end' => Carbon::now()->addDays(4), 'location' => 'location2', 'session_description_id' => $description2->id]);
+
+        $response = $this->get(route('course.show', ['course' => $course, 'slug' => $course->slug]))
+            ->assertStatus(200);
+
+        $sessionGroupAddToCalendarObjects = $response->viewData('sessionGroupAddToCalendarObjects')->map(fn (string $item) => json_decode($item, true));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.name'), $course->title);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.description'), $description1->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.name'), $course->title);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.description'), $description2->description);
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.location'), 'location1');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.location'), 'location2');
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.startDate'), $session1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.startDate'), $session2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.endDate'), $session1['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.endDate'), $session2['start']->isoFormat('YYYY-MM-DD'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.startTime'), $session1['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.startTime'), $session2['start']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '0.endTime'), $session1['end']->isoFormat('HH:mm'));
+        $this->assertStringContainsString(Arr::get($sessionGroupAddToCalendarObjects, '1.endTime'), $session2['end']->isoFormat('HH:mm'));
     }
 
     private function createTestSessions()
