@@ -59,7 +59,7 @@ return [
     'session' => 'Sessie',
     'course_group_times_desc' => ':times keer gegeven',
     'course_sessions_desc' => '{1} 1 sessie |[2,*] :times sessies',
-    'complex_session_situation' => 'Open voor praktische info en data.',
+    'complex_session_situation' => 'Open voor praktische info en data',
     'where' => 'Waar',
     'when' => 'Wanneer',
     'all_sessions_take_place_at' => 'Alle sessies nemen plaats in',

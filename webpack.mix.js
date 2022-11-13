@@ -82,5 +82,7 @@ mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/createcourse.js', 'public/js')
    .js('resources/js/editcourse.js', 'public/js')
    .js('resources/js/editor.js', 'public/js')
+   .js('resources/js/atcb.js', 'public/js')
+   .sass('resources/sass/atcb.scss', 'public/css')
    .sass('resources/sass/app.scss', 'public/css')
    .version();

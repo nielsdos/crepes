@@ -281,6 +281,55 @@ class CourseController extends Controller
     }
 
     /**
+     * Creates for the given course and each session group the necessary JSON to be used by the "Add To Calendar Button" front-end functions.
+     *
+     * @param  Course  $course
+     * @return \Illuminate\Support\Collection<int, string>
+     */
+    public function sessionGroupsToAddToCalendarFormat(Course $course): \Illuminate\Support\Collection
+    {
+        $timezone = config('app.timezone');
+        $language = config('app.locale');
+        $options = ['Google', 'Apple', 'iCal'];
+
+        return $course->sessionGroups->map(function (SessionGroup $sessionGroup) use ($timezone, $language, $options, $course) {
+            $sessions = $sessionGroup->sessions->map(function (Session $session) {
+                $date = $session->start->isoFormat('YYYY-MM-DD');
+
+                return [
+                    'description' => $session->sessionDescription->description,
+                    'location' => $session->location,
+                    'startDate' => $date,
+                    'endDate' => $date,
+                    'startTime' => $session->start->isoFormat('HH:mm'),
+                    'endTime' => substr($session->end, 0, 5),
+                ];
+            });
+
+            $array = [
+                'name' => $course->title,
+                'images' => [],
+                'description' => $course->description,
+                'options' => $options,
+                'timeZone' => $timezone,
+                'language' => $language,
+                'trigger' => 'click',
+                'icalFileName' => 'reminder',
+                'checkmark' => false,
+                'icons' => 'false',
+            ];
+
+            if ($sessions->count() === 1) {
+                $array = array_merge($array, $sessions[0]);
+            } else {
+                $array['dates'] = $sessions;
+            }
+
+            return json_encode($array, JSON_THROW_ON_ERROR | JSON_HEX_TAG);
+        });
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  Course  $course
@@ -311,7 +360,9 @@ class CourseController extends Controller
             $course->sessionGroups->load('subscriptions');
         }
 
-        return view('course.show', compact('course', 'subscription', 'year', 'yearDisplay', 'metaTagDescription', 'showMapOnCourseDetails'));
+        $sessionGroupAddToCalendarObjects = $this->sessionGroupsToAddToCalendarFormat($course);
+
+        return view('course.show', compact('course', 'subscription', 'year', 'yearDisplay', 'metaTagDescription', 'showMapOnCourseDetails', 'sessionGroupAddToCalendarObjects'));
     }
 
     /**

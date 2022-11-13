@@ -1,0 +1,96 @@
+@import '_variables';
+@import '/node_modules/add-to-calendar-button/assets/css/atcb.css';
+
+:root {
+    --font: #{$font-family-sans-serif};
+    --atcb-shadow-list: #{$box-shadow};
+    --atcb-border: #{$card-border-color};
+    --atcb-modal-buttons-bar: #f5f5f5;
+    --atcb-shadow-modal-date-btn: #{$box-shadow-sm};
+    --atcb-shadow-modal-date-btn-hover: #{$box-shadow-sm};
+    --atcb-modal-btn-sec-background: #{$secondary};
+    --atcb-modal-btn-sec-text: #fff;
+    --atcb-modal-btn-text-hover: #fff;
+    --atcb-modal-btn-background-hover: #5c636a;
+    --atcb-shadow-modal-button: none;
+    --atcb-shadow-modal-button-hover: none;
+}
+
+.atcb-button-wrapper {
+    padding: 0;
+}
+
+.atcb-button {
+    // HACK: we override the style with our bootstrap style with JS. So we need to hide the button during the transition...
+    display: none;
+}
+
+.atcb-subevent-btn {
+    width: 100%;
+}
+
+.atcb-dropoverlay .atcb-list, .atcb-list.atcb-modal {
+    border-radius: $border-radius;
+}
+
+button.atcb-modal-btn, a.atcb-modal-btn, .atcb-list {
+    border-radius: $border-radius;
+}
+
+.atcb-list .atcb-list-item:first-child {
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.atcb-list-item {
+    border: none;
+}
+
+.atcb-list .atcb-list-item:not(:first-child) {
+    border-top: 1px solid var(--atcb-border);
+}
+
+.atcb-list-item:last-child {
+    border-radius: 0 0 $border-radius $border-radius;
+}
+
+.atcb-list-item .atcb-icon {
+    margin-bottom: 0.3em;
+    height: initial;
+}
+
+.atcb-modal-box {
+    filter: none;
+    box-shadow: $box-shadow-lg;
+    border-radius: $border-radius-lg;
+}
+
+.atcb-modal-headline {
+    border-radius: $border-radius-lg $border-radius-lg 0 0;
+}
+
+.atcb-modal-buttons {
+    border-radius: 0 0 $border-radius-lg $border-radius-lg;
+}
+
+.atcb-modal-icon {
+    padding: 0;
+}
+
+.atcb-date-btn-left {
+    border-radius: $border-radius-sm 0 0 $border-radius-sm;
+}
+
+.atcb-subevent-btn {
+    border-radius: $border-radius-sm;
+}
+
+.atcb-date-btn-left {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+}
+
+button.atcb-modal-btn, a.atcb-modal-btn {
+    text-transform: unset;
+}

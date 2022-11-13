@@ -59,7 +59,7 @@ return [
     'session' => 'Session',
     'course_group_times_desc' => '{1} organised once|[2,*] :times times organised',
     'course_sessions_desc' => '{1} 1 session|[2,*] :times sessions',
-    'complex_session_situation' => 'Open for practicalities and dates.',
+    'complex_session_situation' => 'Open for practicalities and dates',
     'where' => 'Where',
     'when' => 'When',
     'all_sessions_take_place_at' => 'All sessions take place at',

@@ -15,7 +15,7 @@
                         </ul>
                     @endif
                 @else
-                    @svg('regular/calendar', 'fa-1x') {{ __('common.complex_session_situation') }}
+                    @svg('regular/calendar', 'fa-1x text-danger') {{ __('common.complex_session_situation') }}
                 @endif
             </div>
             @include('partials.course-card', ['course' => $course, 'extra' => false, 'subscription' => Auth::check() && $course->subscriptions->isNotEmpty() /* already filtered on user id */])

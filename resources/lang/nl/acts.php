@@ -68,4 +68,5 @@ return [
     'options' => 'Opties',
     'admin_notification_email' => 'Administratie hoofd e-mailadres',
     'admin_notification_email_hint' => 'Tip: notificaties over inschrijvingen en cursussen zullen naar dit e-mailadres gestuurd worden. Indien blanco zullen er geen notificaties niet gestuurd worden.',
+    'add_to_calendar' => 'Toevoegen aan agenda',
 ];

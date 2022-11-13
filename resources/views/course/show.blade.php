@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['extraStyle' => url(mix('css/atcb.css'))])
 @section('title'){{ __('common.course') }}: {{ $course->title }}@endsection
 @section('titleicon')
 @svg('solid/book-open')
@@ -30,6 +30,10 @@
 $tooLate = $course->tooLateToSubscribe();
 $myGroup = $subscription ? $subscription->groupIndex() : -1;
 @endphp
+
+<script type="text/template" id="add-calendar-button-inner">
+@svg('solid/calendar-plus') {{ __('acts.add_to_calendar') }}
+</script>
 
 @can('delete', $course)
 <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="removeModalLabel" aria-hidden="true">
@@ -115,7 +119,10 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
                 @else
                 <div class="col-lg-12 col-xl-6 mb-4-5" id="group{{ $i + 1 }}">
                 @endif
-                    <h4 class="card-title{{ $i + 1 === $myGroup ? ' text-success' : '' }}">{{ ucfirst(__('common.session_group' )) }} #{{ $i + 1 }}</h4>
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title{{ $i + 1 === $myGroup ? ' text-success' : '' }}">{{ ucfirst(__('common.session_group' )) }} #{{ $i + 1 }}</h4>
+                        <div class="atcb" style="display:none;">{{ $sessionGroupAddToCalendarObjects[$i] }}</div>
+                    </div>
                     <h4 class="card-subtitle text-muted small mb-3">{{ __('common.max_ppl', ['max' => $sg->max_ppl]) }}</h4>
 
                     @php
@@ -222,6 +229,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
                     @endif
                 </div>
             @endforeach
+            <script src="{{ url(mix('js/atcb.js')) }}" async></script>
         </div>
     </div>
 </div>

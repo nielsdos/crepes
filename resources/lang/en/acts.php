@@ -68,4 +68,5 @@ return [
     'options' => 'Options',
     'admin_notification_email' => 'Administration main email address',
     'admin_notification_email_hint' => 'Tip: notifications about registrations and courses will be sent to this email address. If left empty, no notifications will be sent.',
+    'add_to_calendar' => 'Add to calendar',
 ];

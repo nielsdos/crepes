@@ -38,6 +38,7 @@
         "@ckeditor/ckeditor5-paste-from-office": "^35.2.1",
         "@ckeditor/ckeditor5-theme-lark": "^35.2.1",
         "@ckeditor/ckeditor5-undo": "^35.2.1",
+        "add-to-calendar-button": "^1.18.6",
         "bootstrap.native": "^4.2.0"
     }
 }

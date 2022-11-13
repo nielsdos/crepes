@@ -1,7 +1,9 @@
 {
-    "/js/app.js": "/js/app.js?id=2aff786ca3c6c33bed2ca8d4cb0040c0",
+    "/js/app.js": "/js/app.js?id=2faebc148ce23bf0fe1aee61bfe96365",
     "/js/createcourse.js": "/js/createcourse.js?id=133bffe3375961df73fd3480bc226a2a",
     "/js/editcourse.js": "/js/editcourse.js?id=7d2229979b92d2ae6f9473b13b089759",
-    "/js/editor.js": "/js/editor.js?id=548c1716a04930da8ceef598d67e92d9",
-    "/css/app.css": "/css/app.css?id=3743a45033e00cc63289d1e27a9b7c4e"
+    "/js/editor.js": "/js/editor.js?id=51681e734fc41002367f3c5d810d3490",
+    "/js/atcb.js": "/js/atcb.js?id=fd322831500af2b6f1df19174e1183bc",
+    "/css/atcb.css": "/css/atcb.css?id=12e379dd805b8843afb8f5029f4d4628",
+    "/css/app.css": "/css/app.css?id=ba3b15b4f65bee392196d875415983c5"
 }
