@@ -342,11 +342,6 @@ class CourseController extends Controller
             return self::createCourseRedirect($course);
         }
 
-        $subscription = null;
-        if (Auth::check()) {
-            $subscription = Auth::user()->subscriptionFor($course->id);
-        }
-
         $year = self::calcYear($course->last_date);
         $yearDisplay = $this->getYearDisplay($year);
         $showMapOnCourseDetails = $this->settings->getShowMapOnCourseDetails();
@@ -355,9 +350,11 @@ class CourseController extends Controller
             str_replace("\n", ' ', strstr($course->description, "\n\n", true) ?: $course->description), 290
         );
 
+        $subscription = null;
         $course->sessionGroups->load('sessions.sessionDescription');
         if (Auth::check()) {
             $course->sessionGroups->load('subscriptions');
+            $subscription = Auth::user()->subscriptionFor($course->id);
         }
 
         $sessionGroupAddToCalendarObjects = $this->sessionGroupsToAddToCalendarFormat($course);
