@@ -1,5 +1,8 @@
-@import '_variables';
 @import '/node_modules/add-to-calendar-button/assets/css/atcb.css';
+@import '_variables';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/_variables.scss';
 
 :root {
     --font: #{$font-family-sans-serif};
@@ -93,4 +96,14 @@ button.atcb-modal-btn, a.atcb-modal-btn, .atcb-list {
 
 button.atcb-modal-btn, a.atcb-modal-btn {
     text-transform: unset;
+}
+
+#atcb-pos-wrapper {
+    left: 0;
+}
+
+@include media-breakpoint-up(sm) {
+    #atcb-pos-wrapper {
+        left: -50px;
+    }
 }
