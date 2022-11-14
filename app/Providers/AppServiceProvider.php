@@ -58,6 +58,9 @@ class AppServiceProvider extends ServiceProvider
             Model::preventAccessingMissingAttributes();
             Model::preventSilentlyDiscardingAttributes();
         }
+
+        // Disable query events to save performance
+        Model::unsetEventDispatcher();
     }
 
     /**
