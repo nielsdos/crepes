@@ -5,8 +5,8 @@
 @endsection
 @section('buttons')
 <div class="btn-group">
-    <a class="btn btn-light" href="{{ route('account.export.csv') }}" target="_blank">@svg('solid/file-lines', 'fa-1x') {{ __('acts.export_csv') }}</a>
-    <a class="btn btn-success" href="{{ route('account.export.xlsx') }}" target="_blank">@svg('solid/file-excel', 'fa-1x') {{ __('acts.export_excel') }}</a>
+    <a class="btn btn-hide-label-if-small btn-light" href="{{ route('account.export.csv') }}" target="_blank">@svg('solid/file-lines') <span>{{ __('acts.export_csv') }}</span></a>
+    <a class="btn btn-hide-label-if-small btn-success" href="{{ route('account.export.xlsx') }}" target="_blank">@svg('solid/file-excel') <span>{{ __('acts.export_excel') }}</span></a>
 </div>
 @endsection
 @section('content')

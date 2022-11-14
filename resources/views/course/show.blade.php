@@ -32,7 +32,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
 @endphp
 
 <script type="text/template" id="add-calendar-button-inner">
-@svg('solid/calendar-plus') {{ __('acts.add_to_calendar') }}
+@svg('solid/calendar-plus') <span>{{ __('acts.add_to_calendar') }}</span>
 </script>
 
 @can('delete', $course)
@@ -268,8 +268,8 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
             @if($course->subscriptions()->count() > 0)
             <div class="ms-auto titlebuttons">
                 <div class="btn-group">
-                    <a class="btn btn-light" href="{{ route('course.export.csv', $course) }}" target="_blank">@svg('solid/file-lines', 'fa-1x') {{ __('acts.export_csv') }}</a>
-                    <a class="btn btn-success" href="{{ route('course.export.xlsx', $course) }}" target="_blank">@svg('solid/file-excel', 'fa-1x') {{ __('acts.export_excel') }}</a>
+                    <a class="btn btn-hide-label-if-small btn-light" href="{{ route('course.export.csv', $course) }}" target="_blank">@svg('solid/file-lines') <span>{{ __('acts.export_csv') }}</span></a>
+                    <a class="btn btn-hide-label-if-small btn-success" href="{{ route('course.export.xlsx', $course) }}" target="_blank">@svg('solid/file-excel') <span>{{ __('acts.export_excel') }}</span></a>
                 </div>
             </div>
             @endif

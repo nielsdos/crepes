@@ -177,3 +177,22 @@ fieldset.second {
 .card-subtitle {
     display: block;
 }
+
+.btn-hide-label-if-small {
+    width: 36.5px !important;
+    height: 36.5px !important;
+    padding: var(--bs-btn-padding-y) 0 var(--bs-btn-padding-y) 1px;
+
+    @include media-breakpoint-up(md) {
+        width: auto !important;
+        padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    }
+
+    & > span {
+        display: inline;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+    }
+}

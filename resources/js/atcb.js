@@ -6,7 +6,7 @@ import { atcb_init } from 'add-to-calendar-button';
     for (const buttonId of buttonIds) {
         const button = document.getElementById(buttonId);
         const classList = button.classList;
-        classList.add('btn', 'btn-outline-primary');
+        classList.add('btn', 'btn-outline-primary', 'btn-hide-label-if-small');
         classList.remove('atcb-button');
         button.innerHTML = template.innerHTML;
     }
