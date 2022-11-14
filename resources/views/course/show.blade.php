@@ -265,7 +265,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
             <div class="w-100">
                 <h4 class="smalltitle">@svg('solid/pen-to-square', 'fa-xs') {{ __('acts.subscriptions') }}</h4>
             </div>
-            @if($course->subscriptions()->count() > 0)
+            @if($course->subscriptions()->exists())
             <div class="ms-auto titlebuttons">
                 <div class="btn-group">
                     <a class="btn btn-hide-label-if-small btn-light" href="{{ route('course.export.csv', $course) }}" target="_blank">@svg('solid/file-lines') <span>{{ __('acts.export_csv') }}</span></a>
