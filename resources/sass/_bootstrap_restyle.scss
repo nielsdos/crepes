@@ -135,8 +135,7 @@ footer {
 }
 
 .navbar {
-    --navbar-bg: #{mix($blue-700, $cyan-700, 80%)};
-    background: var(--navbar-bg);
+    background: #041d42;
 }
 
 .nav-link {
