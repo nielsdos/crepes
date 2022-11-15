@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @if(! empty($metaTagDescription))<meta name="description" content="{{ $metaTagDescription }}">@endif
-	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>@yield('title') - {{ config('app.title') }}</title>
 	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 	<script src="{{ url(mix('js/app.js')) }}" defer></script>
