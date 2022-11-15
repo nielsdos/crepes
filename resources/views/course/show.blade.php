@@ -245,11 +245,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
         <div class="row mb--4-5">
             @php($sessions = $course->sessionGroups[0]->sessions)
             @foreach($sessions as $i => $session)
-                @if($sessions->count() === 1)
-                <div class="col mb-4-5">
-                @else
-                <div class="col-md-12 col-lg-6 mb-4-5">
-                @endif
+                <div @class(['mb-4-5', 'col' => $sessions->count() === 1, 'col-md-12 col-lg-6' => $sessions->count() > 1])>
                     <h4 class="card-title">{{ __('common.session') }} #{{ $i + 1 }}</h4>
                     @description($session->sessionDescription->description)
                 </div>
