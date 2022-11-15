@@ -136,7 +136,7 @@ footer {
 
 .navbar {
     //background: #041d42;
-    background: mix($blue-800, $cyan-800, 90%);
+    //background: mix($blue-800, $cyan-800, 90%);
 }
 
 .nav-link {
@@ -155,9 +155,14 @@ footer {
     background: $blue-500;
 }
 
+.navbar .nav-link {
+    border: 1px solid transparent;
+}
+
 .navbar .nav-link.active {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.75);
     border-radius: $border-radius;
+    border: 1px solid #fff;
 }
 
 .nav-pills .nav-link.active {

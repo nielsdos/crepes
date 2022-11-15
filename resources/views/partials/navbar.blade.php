@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar navbar-expand-md navbar-dark">
+	<nav class="navbar navbar-expand-md navbar-light">
         <div class="container-fluid">
             <a class="navbar-brand me-5" href="{{ url('/') }}">{{ config('app.name') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
