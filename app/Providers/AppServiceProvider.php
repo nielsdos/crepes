@@ -55,12 +55,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         if (! $this->app->isProduction()) {
+            // Extra strictness features to find bugs quicker development
             Model::preventAccessingMissingAttributes();
             Model::preventSilentlyDiscardingAttributes();
         }
-
-        // Disable query events to save performance
-        Model::unsetEventDispatcher();
     }
 
     /**
