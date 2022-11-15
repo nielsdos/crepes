@@ -139,6 +139,7 @@ footer {
 .table-no-level {
 	box-shadow: none;
 	border: $border-width solid $card-border-color;
+    border-bottom: none;
 }
 
 // Mobile navbar
