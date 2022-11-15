@@ -242,7 +242,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
 
 <div class="card shadow-sm mb-4-5">
     <div class="card-body">
-        <div class="row vdivide mb--4-5">
+        <div class="row mb--4-5">
             @php($sessions = $course->sessionGroups[0]->sessions)
             @foreach($sessions as $i => $session)
                 @if($sessions->count() === 1)
