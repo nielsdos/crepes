@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * Like old, but constrains the output result to strings.
+ * The motivation behind this is that we can pass it directly to {{ }} in blade templates.
+ */
 function old_str(string $key, ?string $default = null): string|null
 {
     $value = old($key, $default);
