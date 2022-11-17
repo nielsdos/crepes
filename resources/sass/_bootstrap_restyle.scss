@@ -172,15 +172,14 @@ footer {
 // Mobile navbar
 @include media-breakpoint-up(md) {
 	.navbar-f .nav-item {
-		@media screen and (max-width: 1185px) {
+		@media screen and (max-width: 1315px) {
 			@include qq(min 3) {
 				& a {
 					font-size: 0;
 				}
 
-				& i {
+				& svg {
 					font-size: 1.5rem;
-					margin-right: 0.5rem;
 				}
 			}
 		}
