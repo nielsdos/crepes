@@ -124,7 +124,7 @@ The application uses a queue in the background to send reminders and notificatio
 You can run the queue using `php artisan queue:listen` or by using a cronjob for `php artisan queue:work --stop-when-empty`.
 Furthermore, the application uses a cronjob to send reminders using the command `php artisan crepes:send-reminders`.
 
-An example cron configuration can be found in [crons](crons).
+An example cron configuration can be found in [crons.md](crons.md).
 
 ## :compass: Roadmap
 
@@ -139,7 +139,7 @@ Contributions are always welcome. Check out the contribution guidelines in [CONT
 
 ## :scroll: License
 
-This project is distributed under the AGPL-3.0 license. See LICENSE.md for more information.
+This project is distributed under the AGPL-3.0 license. See [LICENSE](LICENSE) for more information.
 
 ## :gem: Acknowledgments
 
