@@ -1,6 +1,0 @@
-	- queue:work --stop-when-empty --tries=5
-	  elke 30min
-	- crepes:send-reminders
-	  elke dag om 10:00
-0 10 * * * cd /.../inschrijvingen_core && php artisan subreminders:send >> /dev/null 2>&1
-*/20 * * * * cd /.../inschrijvingen_core && php artisan queue:work --stop-when-empty --tries=5 >> /dev/null 2>&1
