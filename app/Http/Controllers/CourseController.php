@@ -274,7 +274,7 @@ class CourseController extends Controller
     public static function couldBeAValidStreetAddress(string $addressText): bool
     {
         $separator = '[\s,-]+';
-        $streetAndNumber = '[\.\w\s,-]+'; // NOTE: People sometimes use separators in their street names
+        $streetAndNumber = '[\.\w\s,\'-]+'; // NOTE: People sometimes use separators in their street names
         $regex = '/^'.$streetAndNumber.'(\d{3,}'.$separator.'\w+|\w+'.$separator.'\d{3,})$/';
         // dd($regex);
         return preg_match($regex, $addressText) === 1;

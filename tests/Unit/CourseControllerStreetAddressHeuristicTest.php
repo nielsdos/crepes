@@ -27,6 +27,7 @@ class CourseControllerStreetAddressHeuristicTest extends TestCase
             ['Street 123, 1000 City', true],
             ['Street 123, City 1000', true],
             ['3000 Random Road, Chicago AA 123456', true],
+            ['Place de l\'Atomium 1, 1020 Bruxelles', true],
         ];
     }
 }
