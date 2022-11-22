@@ -1,6 +1,6 @@
 <div align="center">
 <h1>Crepes</h1>
-<strong>A course and event registration web application</strong>
+<strong>A self-hosted website to list your events and courses and let users register themselves</strong>
 <br>
 <em><ins>c</ins>ourses <ins>re</ins>gistration <ins>p</ins>latform and <ins>e</ins>nrollment <ins>s</ins>ervice</em>
 <br><br>
@@ -52,7 +52,7 @@ This program allows users to create events in which others can register themselv
 It was originally created to organise courses, but it is more broadly applicable than that.
 </p>
 
-**Features**:
+:zap: **Features**:
 - Create events (or courses) split into different sessions, and in different groups
 - Intuitive user-interface for both administrators and regular users
 - Email reminders and notifications
