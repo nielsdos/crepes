@@ -15,7 +15,7 @@ class CourseControllerStreetAddressHeuristicTest extends TestCase
         $this->assertEquals($result, CourseController::couldBeAValidStreetAddress($input));
     }
 
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         return [
             ['', false],

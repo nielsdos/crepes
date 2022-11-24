@@ -537,7 +537,7 @@ class CourseControllerTest extends TestCase
         $this->_testExportInternal('xlsx');
     }
 
-    public function storeInputs(): array
+    public static function storeInputs(): array
     {
         return [
             [

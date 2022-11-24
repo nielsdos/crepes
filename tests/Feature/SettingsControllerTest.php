@@ -63,7 +63,7 @@ class SettingsControllerTest extends TestCase
             ->assertStatus(302);
     }
 
-    public function invalidViewInputs(): array
+    public static function invalidViewInputs(): array
     {
         return [
             [

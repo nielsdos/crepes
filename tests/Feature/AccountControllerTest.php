@@ -523,7 +523,7 @@ class AccountControllerTest extends TestCase
             ->assertStatus(302);
     }
 
-    public function updatePersonalInputs(): array
+    public static function updatePersonalInputs(): array
     {
         return [
             [
@@ -540,7 +540,7 @@ class AccountControllerTest extends TestCase
         ];
     }
 
-    public function updatePasswordInputs(): array
+    public static function updatePasswordInputs(): array
     {
         return [
             [
@@ -562,7 +562,7 @@ class AccountControllerTest extends TestCase
         ];
     }
 
-    public function updateEmailInputs(): array
+    public static function updateEmailInputs(): array
     {
         return [
             [
@@ -584,7 +584,7 @@ class AccountControllerTest extends TestCase
         ];
     }
 
-    public function updateAdminInputs(): array
+    public static function updateAdminInputs(): array
     {
         return [
             [

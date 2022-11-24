@@ -53,7 +53,7 @@ class RegisterControllerTest extends TestCase
         \Notification::assertSentTimes(VerifyEmail::class, 1);
     }
 
-    public function registerDataProvider(): array
+    public static function registerDataProvider(): array
     {
         return [
             [
