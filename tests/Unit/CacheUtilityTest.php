@@ -4,9 +4,8 @@ namespace Tests\Unit;
 
 use App\Services\CacheUtility;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Schema;
-use Tests\TestCase;
 use Illuminate\Support\Facades\Cache;
+use Tests\TestCase;
 
 class CacheUtilityTest extends TestCase
 {
