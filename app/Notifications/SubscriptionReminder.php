@@ -6,12 +6,7 @@ use App\Models\SessionGroup;
 
 class SubscriptionReminder extends BaseNotification
 {
-    /**
-     * Constructs the reminder mail.
-     *
-     * @param  SessionGroup  $sessionGroup
-     */
-    public function __construct(private SessionGroup $sessionGroup)
+    public function __construct(private readonly SessionGroup $sessionGroup)
     {
     }
 
