@@ -72,7 +72,7 @@ Start by cloning the repository to a local directory.
 ### Prerequisites
 
 * PHP >= 8.1, with XML and GD extensions enabled
-* A Laravel-compatible database server (e.g. MySQL, MariaDB, PostgreSQL, ...)
+* A Laravel-compatible SQL database server (e.g. MySQL, MariaDB, PostgreSQL, ...)
 * Yarn
 
 ### Installation: Dependencies
