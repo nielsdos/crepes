@@ -8,7 +8,8 @@ class CourseIndexControllerTest extends TestCase
 {
     public function test(): void
     {
-        $response = $this->get('/course');
+        $routeCustomizedNames = config('app.route_customized_names');
+        $response = $this->get($routeCustomizedNames['course']);
         $response->assertStatus(302)->assertRedirect(route('course.index'));
     }
 }
