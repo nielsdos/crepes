@@ -78,5 +78,7 @@
     "Your password has changed": "Uw wachtwoord is gewijzigd",
     "We sent you this email to notify you that your password has changed.": "We sturen u deze e-mail om u mee te delen dat uw wachtwoord gewijzigd is.",
     "If you have changed your password yourself, then you can ignore this email.": "Indien u zelf uw wachtwoord heeft gewijzigd, dan kunt u deze e-mail negeren.",
-    "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email.": "Indien u niet zelf uw wachtwoord heeft gewijzigd, dan is uw account mogelijks gekraakt. U kunt dan contact opnemen met de beheerder door te reageren op deze e-mail."
+    "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email.": "Indien u niet zelf uw wachtwoord heeft gewijzigd, dan is uw account mogelijks gekraakt. U kunt dan contact opnemen met de beheerder door te reageren op deze e-mail.",
+    "We are sending you this email to remind you of your registration for the course \":course\".": "We sturen u deze e-mail om u te herinneren aan uw inschrijving voor de cursus \":course\".",
+    "If you no longer wish to receive these reminders, you can disable this in your account settings.": "Indien u deze berichten niet meer wenst te ontvangen, dan kunt u uw voorkeuren aanpassen in uw accountinstellingen."
 }

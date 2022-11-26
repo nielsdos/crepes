@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\SessionGroup;
+use Illuminate\Support\Facades\Lang;
 
 class SubscriptionReminder extends BaseNotification
 {
@@ -19,7 +20,7 @@ class SubscriptionReminder extends BaseNotification
     public function toMail($notifiable): \Illuminate\Notifications\Messages\MailMessage
     {
         return parent::toMail($notifiable)
-                ->subject('Registration reminder')
+                ->subject(Lang::get('Registration reminder'))
                 ->markdown('mail.reminder.subscription', [
                     'url' => route('course.show', [$this->sessionGroup->course->id, $this->sessionGroup->course->slug]),
                     'course' => $this->sessionGroup->course,

@@ -236,7 +236,7 @@ $myGroup = $subscription ? $subscription->groupIndex() : -1;
 
 <div class="row">
     <div class="col">
-        <h4 class="smalltitle">@svg('solid/list', 'fa-xs') {{ __('common.sessions') }}</h4>
+        <h4 class="smalltitle">@svg('solid/list', 'fa-xs') {{ __('common.description_sessions') }}</h4>
     </div>
 </div>
 

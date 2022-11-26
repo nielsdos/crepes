@@ -1,18 +1,20 @@
 @component('mail::message')
 # {{ $greeting }}
 
-We sturen u dit bericht om u eraan te herinneren dat u bent ingeschreven voor de cursus "{{ $course->title }}".
+@lang("We are sending you this email to remind you of your registration for the course \":course\".", ['course' => $course->title])
 
-Sessies:
+
+@lang('common.sessions'):
 @foreach($sessions as $session)
-- @dateTime($session->start) - @time($session->end) <br/>locatie: {{ $session->location }}
+- @dateTime($session->start) - @time($session->end) <br/>@lang('common.location'): {{ $session->location }}
 @endforeach
 
 @component('mail::button', ['url' => $url])
-Cursus bekijken
+@lang('View course')
 @endcomponent
 
-Indien u deze berichten niet meer wenst te ontvangen, dan kunt u uw voorkeuren aanpassen in uw accountinstellingen.
+@lang('If you no longer wish to receive these reminders, you can disable this in your account settings.')
+
 
 @lang('Regards'),<br>{{ config('app.name') }}
 
@@ -21,7 +23,7 @@ Indien u deze berichten niet meer wenst te ontvangen, dan kunt u uw voorkeuren a
     "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
     'into your web browser: [:actionURL](:actionURL)',
     [
-        'actionText' => 'Cursus bekijken',
+        'actionText' => __('View course'),
         'actionURL' => $url
     ]
 )

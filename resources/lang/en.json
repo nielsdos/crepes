@@ -74,5 +74,7 @@
     "Your password has changed": "Your password has changed",
     "We sent you this email to notify you that your password has changed.": "We sent you this email to notify you that your password has changed.",
     "If you have changed your password yourself, then you can ignore this email.": "If you have changed your password yourself, then you can ignore this email.",
-    "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email.": "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email."
+    "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email.": "If you did not change your password, then your account is probably hacked. You can contact us by replying to this email.",
+    "We are sending you this email to remind you of your registration for the course \":course\".": "We are sending you this email to remind you of your registration for the course \":course\".",
+    "If you no longer wish to receive these reminders, you can disable this in your account settings.": "If you no longer wish to receive these reminders, you can disable this in your account settings."
 }
