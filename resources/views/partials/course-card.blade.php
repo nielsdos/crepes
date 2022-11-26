@@ -20,7 +20,7 @@
 </span>
 <span class="card-subtitle mb-1 text-muted small">
     @svg('solid/list', 'fa-1x')
-    @php($session_count = $course->sessions->count() / $sessionGroupsCount)
+    @php($session_count = $extra ? $course->sessionGroups[0]->sessions->count() : $course->sessions->count() / $sessionGroupsCount)
     {{ trans_choice('common.course_sessions_desc', $session_count, ['times' => $session_count]) }}
 </span>
 <span class="card-subtitle mb-1 text-muted small ellipsis">
