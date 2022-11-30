@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – Contributing Guidelines</title><link>/docs/contribution-guidelines/</link><description>Recent content in Contributing Guidelines on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Contribution Guidelines For Documentation</title><link>/docs/contribution-guidelines/contributing-to-docs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contribution-guidelines/contributing-to-docs/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – Contributing Guidelines</title><link>https://nielsdos.github.io/crepes/docs/contribution-guidelines/</link><description>Recent content in Contributing Guidelines on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://nielsdos.github.io/crepes/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Contribution Guidelines For Documentation</title><link>https://nielsdos.github.io/crepes/docs/contribution-guidelines/contributing-to-docs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/contribution-guidelines/contributing-to-docs/</guid><description>
 &lt;p>We use &lt;a href="https://gohugo.io/">Hugo&lt;/a> to format and generate our website and the
 &lt;a href="https://github.com/google/docsy">Docsy&lt;/a> theme for styling and site structure.
 Hugo is an open-source static site generator that provides us with templates,
@@ -18,7 +18,7 @@ information on using pull requests.&lt;/p>
 &lt;p>If you want to run your own local Hugo server to preview your changes as you work:&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>Follow the instructions in &lt;a href="/docs/getting-started">Getting started&lt;/a> to install Hugo and any other tools you need. You&amp;rsquo;ll need at least &lt;strong>Hugo version 0.105&lt;/strong> (we recommend using the most recent available version), and it must be the &lt;strong>extended&lt;/strong> version, which supports SCSS.&lt;/p>
+&lt;p>Follow the instructions in &lt;a href="https://nielsdos.github.io/crepes/docs/getting-started">Getting started&lt;/a> to install Hugo and any other tools you need. You&amp;rsquo;ll need at least &lt;strong>Hugo version 0.105&lt;/strong> (we recommend using the most recent available version), and it must be the &lt;strong>extended&lt;/strong> version, which supports SCSS.&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>Fork the &lt;a href="https://github.com/nielsdos/crepes-docs">documentation repo&lt;/a> repo into your own project, then create a local copy using &lt;code>git clone&lt;/code>. Don’t forget to use &lt;code>--recurse-submodules&lt;/code> or you won’t pull down some of the code you need to generate a working site.&lt;/p>
@@ -39,7 +39,7 @@ changes up to your fork, and create a pull request.&lt;/p>
 &lt;li>&lt;a href="https://www.docsy.dev/docs/">Docsy user guide&lt;/a>: All about Docsy, including how it manages navigation, look and feel, and multi-language support.&lt;/li>
 &lt;li>&lt;a href="https://gohugo.io/documentation/">Hugo documentation&lt;/a>: Comprehensive reference for Hugo.&lt;/li>
 &lt;li>&lt;a href="https://guides.github.com/activities/hello-world/">Github Hello World!&lt;/a>: A basic introduction to GitHub concepts and workflow.&lt;/li>
-&lt;/ul></description></item><item><title>Docs: Contribution Guidelines For The Project</title><link>/docs/contribution-guidelines/contributing-to-project/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contribution-guidelines/contributing-to-project/</guid><description>
+&lt;/ul></description></item><item><title>Docs: Contribution Guidelines For The Project</title><link>https://nielsdos.github.io/crepes/docs/contribution-guidelines/contributing-to-project/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/contribution-guidelines/contributing-to-project/</guid><description>
 &lt;p>Please always target the &lt;code>develop&lt;/code> branch in your pull requests.&lt;/p>
 &lt;p>If you don&amp;rsquo;t know where to start, you can always try to look at the open issues in the repository to find missing features or bugs that should be fixed.&lt;/p>
 &lt;p>If you don&amp;rsquo;t have a particular feature of bugfix in mind, but would still like to make a contribution, you can always check the roadmap and work on something you feel is missing from the project.&lt;/p>

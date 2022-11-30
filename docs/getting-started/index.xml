@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – Getting Started</title><link>/docs/getting-started/</link><description>Recent content in Getting Started on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: System Requirements</title><link>/docs/getting-started/requirements/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/requirements/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – Getting Started</title><link>https://nielsdos.github.io/crepes/docs/getting-started/</link><description>Recent content in Getting Started on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://nielsdos.github.io/crepes/docs/getting-started/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: System Requirements</title><link>https://nielsdos.github.io/crepes/docs/getting-started/requirements/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/getting-started/requirements/</guid><description>
 &lt;p>The requirements are fairly standard for a web server running PHP, also on shared hosting.&lt;/p>
 &lt;table>
 &lt;thead>
@@ -40,7 +40,7 @@
 &lt;td>Yarn is the front-end package manager. This is strictly not necessary to install on the server as you can build the front-end assets locally as well.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: A Note on Shared Hosting</title><link>/docs/getting-started/a_note_on_shared_hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/a_note_on_shared_hosting/</guid><description>
+&lt;/table></description></item><item><title>Docs: A Note on Shared Hosting</title><link>https://nielsdos.github.io/crepes/docs/getting-started/a_note_on_shared_hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/getting-started/a_note_on_shared_hosting/</guid><description>
 &lt;p>The document root of the application is the public folder.
 Do &lt;em>not&lt;/em> place the whole application in the document root, or otherwise your risk creating security issues!
 It is especially dangerous if the environment file &lt;code>.env&lt;/code> is readable by the outside world because it contains application secrets.&lt;/p>
@@ -68,7 +68,7 @@ The files in the &lt;code>public&lt;/code> folder should be the ones placed in t
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">$app&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#204a87;font-weight:bold">require_once&lt;/span> &lt;span style="color:#000">__DIR__&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/../crepes/bootstrap/app.php&amp;#39;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Docs: Installation</title><link>/docs/getting-started/installation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/installation/</guid><description>
+&lt;/div></description></item><item><title>Docs: Installation</title><link>https://nielsdos.github.io/crepes/docs/getting-started/installation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/getting-started/installation/</guid><description>
 &lt;p>This page will guide you on how to install the dependencies for the application.&lt;/p>
 &lt;h2 id="download-the-application-source-code">Download the application source code&lt;/h2>
 &lt;p>The first step is to get a copy of the source code to the machine you want to deploy to.
@@ -90,7 +90,7 @@ In the future we might add a way to install it via composer directly.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yarn prod&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;blockquote>
 &lt;p>If you&amp;rsquo;re setting up a development environment, you can use &lt;code>yarn dev&lt;/code> instead of &lt;code>yarn prod&lt;/code>. You can also use the watch option to automatically rebuild front-end assets upon changes with &lt;code>yarn watch&lt;/code>.&lt;/p>
-&lt;/blockquote></description></item><item><title>Docs: Configuration</title><link>/docs/getting-started/configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/configuration/</guid><description>
+&lt;/blockquote></description></item><item><title>Docs: Configuration</title><link>https://nielsdos.github.io/crepes/docs/getting-started/configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/getting-started/configuration/</guid><description>
 &lt;p>This page will guide you on how to configure the application.&lt;/p>
 &lt;h2 id="creating-an-environment-file-env">Creating an environment file (&lt;code>.env&lt;/code>)&lt;/h2>
 &lt;p>The configuration settings are stored within the &lt;code>.env&lt;/code> file.
@@ -138,7 +138,7 @@ You can do so by executing the following command and following the instructions 
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan crepes:create-user&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;h2 id="next-steps">Next steps&lt;/h2>
 &lt;p>Your application should now be set up and you should be able to visit the public URL and see it in action!
-The next step is to set-up the cronjobs and use your administrator account to create some content.&lt;/p></description></item><item><title>Docs: Cronjobs</title><link>/docs/getting-started/cronjobs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/cronjobs/</guid><description>
+The next step is to set-up the cronjobs and use your administrator account to create some content.&lt;/p></description></item><item><title>Docs: Cronjobs</title><link>https://nielsdos.github.io/crepes/docs/getting-started/cronjobs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://nielsdos.github.io/crepes/docs/getting-started/cronjobs/</guid><description>
 &lt;p>Cronjobs are a way to automatically execute scheduled commands.
 They are used in the application to run jobs from the queue such as sending notification emails, and also to send reminders.&lt;/p>
 &lt;h2 id="a-note-on-the-queue">A note on the queue&lt;/h2>
