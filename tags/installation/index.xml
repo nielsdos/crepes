@@ -1,0 +1,158 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – installation</title><link>/tags/installation/</link><description>Recent content in installation on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="/tags/installation/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: System Requirements</title><link>/docs/getting-started/requirements/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/requirements/</guid><description>
+&lt;p>The requirements are fairly standard for a web server running PHP, also on shared hosting.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Requirement&lt;/th>
+&lt;th>Version&lt;/th>
+&lt;th>Details&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Composer&lt;/td>
+&lt;td>&amp;gt;= 2.2&lt;/td>
+&lt;td>Composer is the back-end package manager&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>HTTP server&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Examples: nginx, Apache&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PHP&lt;/td>
+&lt;td>&amp;gt;= 8.1&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>PHP extensions&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;ul>&lt;li>BCMath&lt;/li>&lt;li>GD&lt;/li>&lt;li>JSON&lt;/li>&lt;li>Mbstring&lt;/li>&lt;li>OpenSSL&lt;/li>&lt;li>PDO&lt;/li>&lt;li>XML&lt;/li>&lt;/ul>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>SQL database&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>Examples: MySQL, MariaDB, PostgreSQL&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Yarn&lt;/td>
+&lt;td>&amp;gt;= 1.20&lt;/td>
+&lt;td>Yarn is the front-end package manager. This is strictly not necessary to install on the server as you can build the front-end assets locally as well.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Docs: A Note on Shared Hosting</title><link>/docs/getting-started/a_note_on_shared_hosting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/a_note_on_shared_hosting/</guid><description>
+&lt;p>The document root of the application is the public folder.
+Do &lt;em>not&lt;/em> place the whole application in the document root, or otherwise your risk creating security issues!
+It is especially dangerous if the environment file &lt;code>.env&lt;/code> is readable by the outside world because it contains application secrets.&lt;/p>
+&lt;p>The safe way to set up a Laravel application (like this application is) on shared hosting is by placing the whole application directory &lt;em>outside&lt;/em> of the document root in a dedicated folder. For example you can name that folders &lt;code>crepes&lt;/code>.
+The files in the &lt;code>public&lt;/code> folder should be the ones placed in the document root.&lt;/p>
+&lt;p>You then need to make a few modifications to &lt;code>public/index.php&lt;/code> in order to accomodate for the changed application directory structure. In particular lines 10 and 11 need changes. The code initially looks like this:&lt;/p>
+&lt;div class="highlight">&lt;div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">require&lt;/span> &lt;span style="color:#000">__DIR__&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/../vendor/autoload.php&amp;#39;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">$app&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#204a87;font-weight:bold">require_once&lt;/span> &lt;span style="color:#000">__DIR__&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/../bootstrap/app.php&amp;#39;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>If your document root is at &lt;code>/public_html&lt;/code>, and the application code is at &lt;code>/crepes&lt;/code>, you should change the code to:&lt;/p>
+&lt;div class="highlight">&lt;div style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">require&lt;/span> &lt;span style="color:#000">__DIR__&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/../crepes/vendor/autoload.php&amp;#39;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">$app&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#204a87;font-weight:bold">require_once&lt;/span> &lt;span style="color:#000">__DIR__&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;/../crepes/bootstrap/app.php&amp;#39;&lt;/span>&lt;span style="color:#000;font-weight:bold">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Docs: Installation</title><link>/docs/getting-started/installation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/installation/</guid><description>
+&lt;p>This page will guide you on how to install the dependencies for the application.&lt;/p>
+&lt;h2 id="download-the-application-source-code">Download the application source code&lt;/h2>
+&lt;p>The first step is to get a copy of the source code to the machine you want to deploy to.
+At this moment, the only way to obtain it is via a git clone or download from the repository.
+In the future we might add a way to install it via composer directly.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/nielsdos/crepes installation-directory
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">cd&lt;/span> installation-directory&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="application-dependencies">Application dependencies&lt;/h2>
+&lt;p>We use the Composer package manager to manage our back-end (PHP) dependencies, while Yarn is used for the front-end dependencies.&lt;/p>
+&lt;h3 id="back-end-dependencies">Back-end dependencies&lt;/h3>
+&lt;p>Install the dependencies for production as follows.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>composer install --no-dev&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;blockquote>
+&lt;p>If you&amp;rsquo;re setting up a development environment, you should not pass the &lt;code>--no-dev&lt;/code> option.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="front-end-dependencies">Front-end dependencies&lt;/h3>
+&lt;p>Install the dependencies and build the front-end assets as follows.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>yarn install
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yarn prod&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;blockquote>
+&lt;p>If you&amp;rsquo;re setting up a development environment, you can use &lt;code>yarn dev&lt;/code> instead of &lt;code>yarn prod&lt;/code>. You can also use the watch option to automatically rebuild front-end assets upon changes with &lt;code>yarn watch&lt;/code>.&lt;/p>
+&lt;/blockquote></description></item><item><title>Docs: Configuration</title><link>/docs/getting-started/configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/configuration/</guid><description>
+&lt;p>This page will guide you on how to configure the application.&lt;/p>
+&lt;h2 id="creating-an-environment-file-env">Creating an environment file (&lt;code>.env&lt;/code>)&lt;/h2>
+&lt;p>The configuration settings are stored within the &lt;code>.env&lt;/code> file.
+To create one you should copy the example file &lt;code>.env.example&lt;/code> to &lt;code>.env&lt;/code>.&lt;/p>
+&lt;blockquote>
+&lt;p>Make sure that the .env file is &lt;em>never&lt;/em> accessible by the outside world: it contains application secrets such as your database password!&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="editing-the-environment-file">Editing the environment file&lt;/h2>
+&lt;p>You should modify the .env file to configure the application. This includes settings for the database, reCAPTCHA settings, and email settings. In particular, the following keys should be at least set-up:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>APP_URL&lt;/code> should point to the public URL where your application is hosted, without trailing slash&lt;/li>
+&lt;li>&lt;code>MAIL_*&lt;/code>&lt;/li>
+&lt;li>&lt;code>DB_*&lt;/code>&lt;/li>
+&lt;li>&lt;code>NOCAPTCHA_*&lt;/code>, for reCAPTCHA
+To get reCAPTCHA keys, please use the &lt;a href="https://www.google.com/recaptcha/admin/create">reCAPTCHA admin console&lt;/a> and select reCAPTCHA v2.&lt;/li>
+&lt;/ul>
+&lt;p>You can furthermore also specify your desired time zone, locale, etc.&lt;/p>
+&lt;p>If you wish to modify the URLs from the default course to event (or something else entirely), you can modify the following entries:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>APP_ROUTE_CUSTOMIZED_NAMES_COURSE&lt;/code>&lt;/li>
+&lt;li>&lt;code>APP_ROUTE_CUSTOMIZED_NAMES_SUBSCRIPTIONS&lt;/code>&lt;/li>
+&lt;li>&lt;code>APP_ROUTE_CUSTOMIZED_NAMES_SUBSCRIBE&lt;/code>&lt;/li>
+&lt;li>&lt;code>APP_ROUTE_CUSTOMIZED_NAMES_UNSUBSCRIBE&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="generating-the-application-key">Generating the application key&lt;/h2>
+&lt;p>Finally, you should generate an application key. The application key is used to perform encryption and decryption routines within the application. It is also stored in the &lt;code>.env&lt;/code> file.
+You should only generate this once, and never change it again later &lt;em>unless&lt;/em> the key gets leaked. If you regenerate the key, all sessions and signed URLs will become invalid.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan key:generate&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="setting-up-the-database">Setting up the database&lt;/h2>
+&lt;p>The database schema is handled via migrations. These are scripts that build or upgrade your database schema incrementally in a way that can also be rolled back. If you&amp;rsquo;re interested you can read more about them in the &lt;a href="https://laravel.com/docs/9.x/migrations">Laravel documentation&lt;/a>.&lt;/p>
+&lt;p>If your database settings are correct, you should run the following command to set-up the database.
+Make sure your database actually exists as this will not be created by the script!&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan migrate&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;p>Every time you upgrade the application you should re-run the above command to make sure your database schema is always the latest version.&lt;/p>
+&lt;h2 id="caching">Caching&lt;/h2>
+&lt;p>To improve the performance of the application, the configuration, routes, views and icons should be cached.
+You can easily to this by executing the optimize command, which internally performs the following caching commands:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan config:cache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>php artisan route:cache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>php artisan icons:cache
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>php artisan view:cache&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="creating-an-administrator-user">Creating an administrator user&lt;/h2>
+&lt;p>There are no initial users provided by the application. You should therefore create an initial administrator user.
+You can do so by executing the following command and following the instructions on your screen.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan crepes:create-user&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="next-steps">Next steps&lt;/h2>
+&lt;p>Your application should now be set up and you should be able to visit the public URL and see it in action!
+The next step is to set-up the cronjobs and use your administrator account to create some content.&lt;/p></description></item><item><title>Docs: Cronjobs</title><link>/docs/getting-started/cronjobs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/getting-started/cronjobs/</guid><description>
+&lt;p>Cronjobs are a way to automatically execute scheduled commands.
+They are used in the application to run jobs from the queue such as sending notification emails, and also to send reminders.&lt;/p>
+&lt;h2 id="a-note-on-the-queue">A note on the queue&lt;/h2>
+&lt;p>If you plan on listening to the queue using Laravel&amp;rsquo;s built-in tools instead of using a scheduled job, you can use the following command instead of setting up a cronjob &lt;em>for the queue&lt;/em>. A cronjob to send reminders is still necessary.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>php artisan queue:listen&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;h2 id="cronjob-configuration">Cronjob configuration&lt;/h2>
+&lt;p>The following two jobs should be run:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>php artisan queue:work --stop-when-empty --tries=5&lt;/code>&lt;/li>
+&lt;li>&lt;code>php artisan crepes:send-reminders&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>An example crontab configuration could look like:&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-crontab" data-lang="crontab">0 10 * * * cd installation_directory &amp;amp;&amp;amp; php artisan subreminders:send &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1
+*/20 * * * * cd installation_directory &amp;amp;&amp;amp; php artisan queue:work --stop-when-empty --tries=5 &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1&lt;/code>&lt;/pre>
+&lt;blockquote>
+&lt;p>Make sure to replace &lt;code>installation_directory&lt;/code> with your installation directory!&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

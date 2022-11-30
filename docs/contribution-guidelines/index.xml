@@ -1,0 +1,73 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Crepes – Contributing Guidelines</title><link>/docs/contribution-guidelines/</link><description>Recent content in Contributing Guidelines on Crepes</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/contribution-guidelines/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Contribution Guidelines For Documentation</title><link>/docs/contribution-guidelines/contributing-to-docs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contribution-guidelines/contributing-to-docs/</guid><description>
+&lt;p>We use &lt;a href="https://gohugo.io/">Hugo&lt;/a> to format and generate our website and the
+&lt;a href="https://github.com/google/docsy">Docsy&lt;/a> theme for styling and site structure.
+Hugo is an open-source static site generator that provides us with templates,
+content organisation in a standard directory structure, and a website generation
+engine. You write the pages in Markdown (or HTML if you want), and Hugo wraps them up into a website.&lt;/p>
+&lt;p>All submissions, including submissions by project members, require review. We
+use GitHub pull requests for this purpose. Consult
+&lt;a href="https://help.github.com/articles/about-pull-requests/">GitHub Help&lt;/a> for more
+information on using pull requests.&lt;/p>
+&lt;h2 id="updating-a-single-page">Updating a single page&lt;/h2>
+&lt;p>If you&amp;rsquo;ve just spotted something you&amp;rsquo;d like to change while using the docs, Docsy has a shortcut for you:&lt;/p>
+&lt;ol>
+&lt;li>Click &lt;strong>Edit this page&lt;/strong> in the top right hand corner of the page.&lt;/li>
+&lt;li>If you don&amp;rsquo;t already have an up to date fork of the project repo, you are prompted to get one - click &lt;strong>Fork this repository and propose changes&lt;/strong> or &lt;strong>Update your Fork&lt;/strong> to get an up to date version of the project to edit. The appropriate page in your fork is displayed in edit mode.&lt;/li>
+&lt;/ol>
+&lt;h2 id="previewing-your-changes-locally">Previewing your changes locally&lt;/h2>
+&lt;p>If you want to run your own local Hugo server to preview your changes as you work:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Follow the instructions in &lt;a href="/docs/getting-started">Getting started&lt;/a> to install Hugo and any other tools you need. You&amp;rsquo;ll need at least &lt;strong>Hugo version 0.105&lt;/strong> (we recommend using the most recent available version), and it must be the &lt;strong>extended&lt;/strong> version, which supports SCSS.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Fork the &lt;a href="https://github.com/nielsdos/crepes-docs">documentation repo&lt;/a> repo into your own project, then create a local copy using &lt;code>git clone&lt;/code>. Don’t forget to use &lt;code>--recurse-submodules&lt;/code> or you won’t pull down some of the code you need to generate a working site.&lt;/p>
+&lt;pre tabindex="0">&lt;code>git clone --recurse-submodules --depth 1 https://github.com/nielsdos/crepes-docs.git
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>Run &lt;code>hugo server&lt;/code> in the site root directory. By default your site will be available at http://localhost:1313/. Now that you&amp;rsquo;re serving your site locally, Hugo will watch for changes to the content and automatically refresh your site.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Continue with the usual GitHub workflow to edit files, commit them, push the
+changes up to your fork, and create a pull request.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="creating-an-issue">Creating an issue&lt;/h2>
+&lt;p>If you&amp;rsquo;ve found a problem in the docs, but you&amp;rsquo;re not sure how to fix it yourself, please create an issue in the &lt;a href="https://github.com/nielsdos/crepes-docs/issues">documentation repo&lt;/a>. You can also create an issue about a specific page by clicking the &lt;strong>Create Issue&lt;/strong> button in the top right hand corner of the page.&lt;/p>
+&lt;h2 id="useful-resources">Useful resources&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.docsy.dev/docs/">Docsy user guide&lt;/a>: All about Docsy, including how it manages navigation, look and feel, and multi-language support.&lt;/li>
+&lt;li>&lt;a href="https://gohugo.io/documentation/">Hugo documentation&lt;/a>: Comprehensive reference for Hugo.&lt;/li>
+&lt;li>&lt;a href="https://guides.github.com/activities/hello-world/">Github Hello World!&lt;/a>: A basic introduction to GitHub concepts and workflow.&lt;/li>
+&lt;/ul></description></item><item><title>Docs: Contribution Guidelines For The Project</title><link>/docs/contribution-guidelines/contributing-to-project/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/contribution-guidelines/contributing-to-project/</guid><description>
+&lt;p>Please always target the &lt;code>develop&lt;/code> branch in your pull requests.&lt;/p>
+&lt;p>If you don&amp;rsquo;t know where to start, you can always try to look at the open issues in the repository to find missing features or bugs that should be fixed.&lt;/p>
+&lt;p>If you don&amp;rsquo;t have a particular feature of bugfix in mind, but would still like to make a contribution, you can always check the roadmap and work on something you feel is missing from the project.&lt;/p>
+&lt;h2 id="setting-up-a-development-environment">Setting up a development environment&lt;/h2>
+&lt;p>You can follow the same installation instructions for a production environment, except for the following changes.&lt;/p>
+&lt;h3 id="updating-env">Updating &lt;code>.env&lt;/code>&lt;/h3>
+&lt;p>It is recommended to change the &lt;code>.env&lt;/code> file to have the following properties set:&lt;/p>
+&lt;pre tabindex="0">&lt;code>APP_ENV=development
+APP_DEBUG=true
+&lt;/code>&lt;/pre>&lt;h3 id="installing-development-dependencies">Installing development dependencies&lt;/h3>
+&lt;p>Do &lt;em>not&lt;/em> pass &lt;code>--no-dev&lt;/code> to the composer install command line:&lt;/p>
+&lt;pre tabindex="0">&lt;code>composer install
+&lt;/code>&lt;/pre>&lt;p>Front-end dependencies can be installed with:&lt;/p>
+&lt;pre tabindex="0">&lt;code>yarn install
+&lt;/code>&lt;/pre>&lt;h2 id="developing">Developing&lt;/h2>
+&lt;p>You can start the built-in Laravel server using:&lt;/p>
+&lt;pre tabindex="0">&lt;code>php artisan serve
+&lt;/code>&lt;/pre>&lt;p>To make changes to the front-end JavaScript and CSS code, you should be using:&lt;/p>
+&lt;pre tabindex="0">&lt;code>yarn watch
+&lt;/code>&lt;/pre>&lt;p>to watch for changes and automatically rebuild the affected front-end files.&lt;/p>
+&lt;h2 id="testing">Testing&lt;/h2>
+&lt;p>We use PHPUnit as our testing framework with a test database called &lt;code>courses_testing&lt;/code>. Make sure to setup an empty database with that name in order to run the tests. Please make sure to include regression tests if you are fixing a bug, or feature tests when adding a new feature.&lt;/p>
+&lt;p>To run the tests, use:&lt;/p>
+&lt;pre tabindex="0">&lt;code>vendor/bin/phpunit
+&lt;/code>&lt;/pre>&lt;p>If you wish to generate a coverage report whilst running the tests, you can use:&lt;/p>
+&lt;pre tabindex="0">&lt;code>php artisan view:clear;XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html reports
+&lt;/code>&lt;/pre>&lt;h2 id="static-analysis">Static analysis&lt;/h2>
+&lt;p>We use the PHPStan static analyser tool to find bugs earlier. We recommend that you run the tool and fix any errors that pop up by your changes before opening a pull request.&lt;/p>
+&lt;p>To run the tool you can use:&lt;/p>
+&lt;pre tabindex="0">&lt;code>vendor/bin/phpstan analyse --memory-limit=1G
+&lt;/code>&lt;/pre></description></item></channel></rss>
