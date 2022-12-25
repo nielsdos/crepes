@@ -6,7 +6,7 @@
 <br><br>
 
 [![codecov](https://img.shields.io/codecov/c/github/nielsdos/crepes?logo=codecov&style=for-the-badge&token=708N5Z15C5)](https://codecov.io/github/nielsdos/crepes)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/nielsdos/crepes/CI/main?style=for-the-badge)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/nielsdos/crepes/ci.yml?branch=main&style=for-the-badge)
 [![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=for-the-badge&logo=laravel)](https://laravel.com/docs/9.x/octane#introduction)
 ![PHP](https://img.shields.io/badge/PHP%3E=8.1-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![GitHub](https://img.shields.io/github/license/nielsdos/crepes?style=for-the-badge)
